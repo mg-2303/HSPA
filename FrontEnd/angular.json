@@ -24,7 +24,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/assets", "src/data"],
+            "assets": ["src/favicon.ico", "src/assets", "src/data"],
             "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
