@@ -1,2 +1,7 @@
-<p>property-list works!</p>
-<app-property-card />
+<div class="row">
+  @for (propertyCard of propertiesCards; track propertyCard) {
+    <div class="shadow-lg col-sm-4 p-3">
+      <app-property-card [propertyCard]="propertyCard" />
+    </div>
+  }
+</div>
