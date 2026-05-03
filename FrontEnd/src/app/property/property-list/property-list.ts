@@ -1,8 +1,7 @@
 import { HousingService } from "./../../services/housing-service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PropertyCard } from "../property-card/property-card";
 import { CommonModule } from "@angular/common";
-import { error } from "console";
 import { IPropertyCard } from "../../interfaces/interface";
 
 @Component({
@@ -11,17 +10,15 @@ import { IPropertyCard } from "../../interfaces/interface";
   templateUrl: "./property-list.html",
   styleUrl: "./property-list.scss",
 })
-export class PropertyList {
+export class PropertyList implements OnInit {
   propertiesCards: Array<IPropertyCard> = [];
 
-  constructor(private readonly housingService: HousingService) {
-    this.housingService.getAllProperties().subscribe(
-      (data) => {
-        this.propertiesCards = data;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+  constructor(private readonly housingService: HousingService) {}
+
+  ngOnInit(): void {
+    this.housingService.getAllProperties().subscribe({
+      next: (data) => (this.propertiesCards = data),
+      error: (err) => console.error(err),
+    });
   }
 }

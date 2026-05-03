@@ -1,20 +1,5 @@
 [
-  {
-    "id": 1,
-    "name": "Manav House",
-    "type": "House",
-    "price": 8000
-  },
-  {
-    "id": 1,
-    "name": "Manav House",
-    "type": "House",
-    "price": 8000
-  },
-  {
-    "id": 1,
-    "name": "Manav House",
-    "type": "House",
-    "price": 8000
-  }
+  { "id": 1, "name": "Manav House", "type": "House", "price": 8000 },
+  { "id": 2, "name": "Villa Lux", "type": "Villa", "price": 15000 },
+  { "id": 3, "name": "Flat Pro", "type": "Apartment", "price": 5000 }
 ]

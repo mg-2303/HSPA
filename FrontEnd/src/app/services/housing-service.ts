@@ -10,10 +10,6 @@ export class HousingService {
   constructor(private readonly http: HttpClient) {}
 
   getAllProperties(): Observable<IPropertyCard[]> {
-    return this.http.get("data/properties.json").pipe(
-      map((data) => {
-        return Object.values(data);
-      }),
-    );
+    return this.http.get<IPropertyCard[]>("data/properties.json");
   }
 }
