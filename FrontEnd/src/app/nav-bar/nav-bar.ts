@@ -1,6 +1,12 @@
 import { Component } from "@angular/core";
 import { RouterLink, RouterLinkActive, RouterModule } from "@angular/router";
-import { ADD_PROPERTY, RENT_PROPERTY, ROOT_PATH } from "../constants/routesConstants";
+import {
+  ADD_PROPERTY,
+  RENT_PROPERTY,
+  ROOT_PATH,
+  USER_LOGIN,
+  USER_REGISTER,
+} from "../constants/routesConstants";
 
 @Component({
   selector: "app-nav-bar",
@@ -15,4 +21,6 @@ export class NavBar {
   ROOT_PATH = ROOT_PATH;
   RENT_PROPERTY = RENT_PROPERTY;
   ADD_PROPERTY = ADD_PROPERTY;
+  USER_REGISTER = USER_REGISTER;
+  USER_LOGIN = USER_LOGIN;
 }
