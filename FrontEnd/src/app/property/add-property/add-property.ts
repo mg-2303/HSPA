@@ -1,16 +1,17 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, ViewChild } from "@angular/core";
+import { FormsModule, NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-add-property",
-  imports: [],
+  imports: [FormsModule],
   templateUrl: "./add-property.html",
   styleUrl: "./add-property.scss",
 })
 export class AddProperty {
-  constructor(private readonly router: Router) {}
+  @ViewChild("addPropertyForm") addPropertyForm!: NgForm;
 
-  onBack() {
-    this.router.navigate(["/"]);
+  onSubmit() {
+    console.log("submitted");
+    console.log(this.addPropertyForm);
   }
 }
