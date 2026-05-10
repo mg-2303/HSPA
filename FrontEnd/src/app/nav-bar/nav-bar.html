@@ -23,12 +23,42 @@
     </ul>
     <div>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="[USER_REGISTER]">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="[USER_LOGIN]">Login</a>
-        </li>
+        @if (!isLoggedIn) {
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="[USER_REGISTER]"
+              >Register</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="[USER_LOGIN]">Login</a>
+          </li>
+        }
+        @if (isLoggedIn) {
+          <span dropdown>
+            <a
+              href
+              id="basic-link"
+              dropdownToggle
+              (click)="(false)"
+              aria-controls="basic-link-dropdown"
+              >Welcome {{ isLoggedIn }}</a
+            >
+            <div *dropdownMenu class="dropdown-menu">
+              <a class="dropdown-item" href="#"
+                ><i class="fa-solid fa-table-columns"></i> View Dashboard
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fa-solid fa-circle-user"></i> My profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fa-solid fa-circle-user"></i> Change Password
+              </a>
+              <a class="dropdown-item" (click)="onLogout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+              </a>
+            </div>
+          </span>
+        }
       </ul>
     </div>
   </div>
