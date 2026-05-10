@@ -94,9 +94,11 @@ export class UserRegister {
     if (this.registrationForm.valid) {
       this.user = this.registrationForm.value;
       this.userService.addUser(this.user);
-      this.alertify.success("Successfully registerd");
+      this.alertify.success("Congrats You Successfully Registered");
       this.registrationForm.reset();
       this.isFormSubmitted = false;
+    } else {
+      this.alertify.error("Kindly provide required fields");
     }
   }
 }
