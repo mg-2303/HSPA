@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { RouterLink, RouterLinkActive, RouterModule } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive, RouterModule } from "@angular/router";
 import {
   ADD_PROPERTY,
   RENT_PROPERTY,
@@ -23,4 +23,15 @@ export class NavBar {
   ADD_PROPERTY = ADD_PROPERTY;
   USER_REGISTER = USER_REGISTER;
   USER_LOGIN = USER_LOGIN;
+
+  constructor(private readonly router: Router) {}
+
+  get isLoggedIn() {
+    return localStorage.getItem("token");
+  }
+
+  onLogout() {
+    localStorage.removeItem("token");
+    this.router.navigate([USER_LOGIN]);
+  }
 }

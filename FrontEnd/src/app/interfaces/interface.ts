@@ -15,3 +15,7 @@ export interface IRegisterUser {
   confirmPassword: string;
   mobile: string;
 }
+export interface ILoginUser {
+  userName: string;
+  password: string;
+}
