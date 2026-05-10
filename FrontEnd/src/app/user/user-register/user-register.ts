@@ -2,6 +2,7 @@ import { CommonModule, JsonPipe } from "@angular/common";
 import { Component } from "@angular/core";
 import {
   AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
@@ -9,6 +10,8 @@ import {
   ValidationErrors,
   Validators,
 } from "@angular/forms";
+import { IRegisterUser } from "../../interfaces/interface";
+import { User } from "../../services/user";
 
 @Component({
   selector: "app-user-register",
@@ -18,19 +21,42 @@ import {
 })
 export class UserRegister {
   registrationForm!: FormGroup;
+  user: IRegisterUser = {
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    mobile: "",
+  };
 
-  constructor() {
-    this.registrationForm = new FormGroup(
+  isFormSubmitted: boolean = false;
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly userService: User,
+  ) {
+    // this.registrationForm = new FormGroup(
+    //   {
+    //     userName: new FormControl("Mahesh", Validators.required),
+    //     email: new FormControl(null, [Validators.required, Validators.email]),
+    //     password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+    //     confirmPassword: new FormControl(null, [Validators.required]),
+    //     mobile: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+    //   },
+    //   {
+    //     validators: this.passwordMatchingValidators,
+    //   },
+    // );
+    this.createRegistrationForm();
+  }
+
+  createRegistrationForm() {
+    this.registrationForm = this.fb.group(
       {
-        userName: new FormControl("Mahesh", Validators.required),
-
-        email: new FormControl(null, [Validators.required, Validators.email]),
-
-        password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-
-        confirmPassword: new FormControl(null, [Validators.required]),
-
-        mobile: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+        userName: [null, Validators.required],
+        email: [null, [Validators.required, Validators.email]],
+        password: [null, [Validators.required, Validators.minLength(8)]],
+        confirmPassword: [null, [Validators.required]],
+        mobile: [null, [Validators.required, Validators.minLength(10)]],
       },
       {
         validators: this.passwordMatchingValidators,
@@ -62,6 +88,12 @@ export class UserRegister {
   }
 
   onSubmit() {
-    console.log(this.registrationForm);
+    this.isFormSubmitted = true;
+    if (this.registrationForm.valid) {
+      this.user = this.registrationForm.value;
+      this.userService.addUser(this.user);
+      this.registrationForm.reset();
+      this.isFormSubmitted = false;
+    }
   }
 }

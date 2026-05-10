@@ -8,3 +8,10 @@ export interface IPropertyCard {
   sellRent: TSellRent;
   imageName?: TPropertiesImage;
 }
+export interface IRegisterUser {
+  userName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  mobile: string;
+}

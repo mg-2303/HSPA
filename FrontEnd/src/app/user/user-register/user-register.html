@@ -7,7 +7,7 @@
           <div class="form-group col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="userName" />
-            @if (userName.invalid && userName.touched) {
+            @if (userName.invalid && (userName.touched || isFormSubmitted)) {
               <span class="error-block">Pls provide username</span>
             }
           </div>
@@ -15,7 +15,7 @@
           <div class="form-group col-12">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email" />
-            @if (email.invalid && email.touched) {
+            @if (email.invalid && (email.touched || isFormSubmitted)) {
               @if (email.hasError("required")) {
                 <span class="error-block"> Pls provide email </span>
               }
@@ -29,7 +29,7 @@
           <div class="form-group col-12">
             <label for="passwrod" class="form-label">Password</label>
             <input type="password" class="form-control" formControlName="password" />
-            @if (password.invalid && password.touched) {
+            @if (password.invalid && (password.touched || isFormSubmitted)) {
               @if (password.hasError("required")) {
                 <span class="error-block"> Pls provide password </span>
               }
@@ -50,7 +50,7 @@
               }"
               formControlName="confirmPassword"
             />
-            @if (confirmPassword.invalid && confirmPassword.touched) {
+            @if (confirmPassword.invalid && (confirmPassword.touched || isFormSubmitted)) {
               @if (confirmPassword.hasError("required")) {
                 <span class="error-block"> Pls provide confirm Password </span>
               }
@@ -63,7 +63,7 @@
           <div class="form-group col-12">
             <label for="mobile" class="form-label">Mobile</label>
             <input type="text" class="form-control" formControlName="mobile" />
-            @if (mobile.invalid && mobile.touched) {
+            @if (mobile.invalid && (mobile.touched || isFormSubmitted)) {
               @if (mobile.hasError("required")) {
                 <span class="error-block"> Pls provide mobile </span>
               }
