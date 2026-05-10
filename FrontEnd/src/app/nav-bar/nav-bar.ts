@@ -7,12 +7,10 @@ import {
   USER_LOGIN,
   USER_REGISTER,
 } from "../constants/routesConstants";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 
 @Component({
   selector: "app-nav-bar",
-  imports: [RouterLink, RouterLinkActive, RouterModule, BrowserAnimationsModule, BsDropdownModule],
+  imports: [RouterLink, RouterLinkActive, RouterModule],
   templateUrl: "./nav-bar.html",
   styleUrl: "./nav-bar.scss",
   standalone: true,
