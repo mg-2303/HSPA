@@ -1,5 +1,33 @@
 [
-  { "id": 1, "name": "Manav House", "type": "House", "price": 8000 },
-  { "id": 2, "name": "Villa Lux", "type": "Villa", "price": 15000 },
-  { "id": 3, "name": "Flat Pro", "type": "Apartment", "price": 5000 }
+  {
+    "id": 1,
+    "name": "Manav House",
+    "type": "House",
+    "price": 8000,
+    "imageName": "prop-1",
+    "SellRent": "Sell"
+  },
+  {
+    "id": 2,
+    "name": "Villa Lux",
+    "type": "Villa",
+    "price": 15000,
+    "imageName": "prop-2",
+    "sellRent": "Sell"
+  },
+  {
+    "id": 3,
+    "name": "Flat Pro",
+    "type": "Apartment",
+    "price": 5000,
+    "imageName": "prop-3",
+    "sellRent": "Rent"
+  },
+  {
+    "id": 4,
+    "name": "Flat Pro",
+    "type": "Apartment",
+    "price": 5000,
+    "sellRent": "Rent"
+  }
 ]

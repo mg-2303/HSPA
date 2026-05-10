@@ -1,8 +1,10 @@
+import { RENT_PROPERTY, TSellRent } from "./../../constants/routesConstants";
 import { HousingService } from "./../../services/housing-service";
 import { Component, OnInit } from "@angular/core";
 import { PropertyCard } from "../property-card/property-card";
 import { CommonModule } from "@angular/common";
 import { IPropertyCard } from "../../interfaces/interface";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-property-list",
@@ -12,11 +14,22 @@ import { IPropertyCard } from "../../interfaces/interface";
 })
 export class PropertyList implements OnInit {
   propertiesCards: Array<IPropertyCard> = [];
+  sellRent: TSellRent = "Sell";
 
-  constructor(private readonly housingService: HousingService) {}
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly housingService: HousingService,
+  ) {}
 
   ngOnInit(): void {
-    this.housingService.getAllProperties().subscribe({
+    this.activatedRoute.url.subscribe((url) => {
+      this.sellRent = url[0]?.path === RENT_PROPERTY ? "Rent" : "Sell";
+      this.loadProperties();
+    });
+  }
+
+  loadProperties() {
+    this.housingService.getAllProperties(this.sellRent).subscribe({
       next: (data) => (this.propertiesCards = data),
       error: (err) => console.error(err),
     });
