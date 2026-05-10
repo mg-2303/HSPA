@@ -4,7 +4,7 @@ import { IRegisterUser } from "../interfaces/interface";
 @Injectable({
   providedIn: "root",
 })
-export class User {
+export class UserService {
   addUser(user: IRegisterUser) {
     let users: IRegisterUser[] = [];
     const localStorageUsers = localStorage.getItem("Users");

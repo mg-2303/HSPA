@@ -11,7 +11,8 @@ import {
   Validators,
 } from "@angular/forms";
 import { IRegisterUser } from "../../interfaces/interface";
-import { User } from "../../services/user";
+import { UserService } from "../../services/user-service";
+import { AlertifyService } from "../../services/alertify-service";
 
 @Component({
   selector: "app-user-register",
@@ -32,7 +33,8 @@ export class UserRegister {
   isFormSubmitted: boolean = false;
   constructor(
     private readonly fb: FormBuilder,
-    private readonly userService: User,
+    private readonly userService: UserService,
+    private alertify: AlertifyService,
   ) {
     // this.registrationForm = new FormGroup(
     //   {
@@ -92,8 +94,11 @@ export class UserRegister {
     if (this.registrationForm.valid) {
       this.user = this.registrationForm.value;
       this.userService.addUser(this.user);
+      this.alertify.success("Congrats You Successfully Registered");
       this.registrationForm.reset();
       this.isFormSubmitted = false;
+    } else {
+      this.alertify.error("Kindly provide required fields");
     }
   }
 }
